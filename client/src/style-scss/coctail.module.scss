@@ -1,29 +1,36 @@
-@import "./variables"; 
+@import "./variables";
 
-#mainContainer{
-     display:flex;
+#mainContainer {
+     display: flex;
      flex-direction: column;
-     width:100%;
+     width: 100%;
      flex-grow: 1;
 
-     #container{
-          display:flex;
+     #container {
+          display: flex;
           font-size: $L;
           color: $color2;
           text-align: center;
           flex-grow: 1;
-           #picture{
-               width:50%;
+          #picture {
+               width: 40%;
           }
-          #details{
-               width:50%;
-              
+          #details {
+               width: 60%;
+               padding: 10px;
+               h2 {
+                    font-size: $L;
+               }
+               ol,
+               p {
+                    font-size: $M;
+                    text-align: left;
+               }
           }
-     
      }
 
      #buttons {
-          display:flex;
+          display: flex;
           justify-content: space-evenly;
           .button {
                width: 200px;
@@ -33,6 +40,12 @@
                color: $color3;
                background-color: $bgColor3;
           }
+     }
+}
 
+@media only screen and (max-width: 600px) {
+     #container {
+          display: flex;
+          flex-direction: column;
      }
 }

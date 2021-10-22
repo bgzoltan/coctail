@@ -10,9 +10,16 @@
     text-align: center;
     flex-grow: 1; }
     #mainContainer #container #picture {
-      width: 50%; }
+      width: 40%; }
     #mainContainer #container #details {
-      width: 50%; }
+      width: 60%;
+      padding: 10px; }
+      #mainContainer #container #details h2 {
+        font-size: 40px; }
+      #mainContainer #container #details ol,
+      #mainContainer #container #details p {
+        font-size: 30px;
+        text-align: left; }
   #mainContainer #buttons {
     display: flex;
     justify-content: space-evenly; }
@@ -23,5 +30,10 @@
       border-radius: 9px;
       color: whitesmoke;
       background-color: purple; }
+
+@media only screen and (max-width: 600px) {
+  #container {
+    display: flex;
+    flex-direction: column; } }
 
 /*# sourceMappingURL=coctail.module.css.map */

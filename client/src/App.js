@@ -1,4 +1,4 @@
-import "./style-css/App.css";
+import "./style-css/app.css";
 import Header from "./header";
 import Coctail from "./coctail";
 import Footer from "./footer";
