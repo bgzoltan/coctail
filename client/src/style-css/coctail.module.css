@@ -1,0 +1,27 @@
+#mainContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex-grow: 1; }
+  #mainContainer #container {
+    display: flex;
+    font-size: 40px;
+    color: orange;
+    text-align: center;
+    flex-grow: 1; }
+    #mainContainer #container #picture {
+      width: 50%; }
+    #mainContainer #container #details {
+      width: 50%; }
+  #mainContainer #buttons {
+    display: flex;
+    justify-content: space-evenly; }
+    #mainContainer #buttons .button {
+      width: 200px;
+      margin: 5px;
+      padding: 10px;
+      border-radius: 9px;
+      color: whitesmoke;
+      background-color: purple; }
+
+/*# sourceMappingURL=coctail.module.css.map */

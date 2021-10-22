@@ -1,0 +1,38 @@
+@import "./variables"; 
+
+#mainContainer{
+     display:flex;
+     flex-direction: column;
+     width:100%;
+     flex-grow: 1;
+
+     #container{
+          display:flex;
+          font-size: $L;
+          color: $color2;
+          text-align: center;
+          flex-grow: 1;
+           #picture{
+               width:50%;
+          }
+          #details{
+               width:50%;
+              
+          }
+     
+     }
+
+     #buttons {
+          display:flex;
+          justify-content: space-evenly;
+          .button {
+               width: 200px;
+               margin: 5px;
+               padding: 10px;
+               border-radius: 9px;
+               color: $color3;
+               background-color: $bgColor3;
+          }
+
+     }
+}
