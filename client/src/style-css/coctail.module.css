@@ -8,9 +8,11 @@
     font-size: 40px;
     color: orange;
     text-align: center;
-    flex-grow: 1; }
+    flex-grow: 1;
+    margin: 30px; }
     #mainContainer #container #picture {
-      width: 40%; }
+      width: 35%;
+      height: 35%; }
     #mainContainer #container #details {
       width: 60%;
       padding: 10px; }
@@ -23,13 +25,17 @@
   #mainContainer #buttons {
     display: flex;
     justify-content: space-evenly; }
-    #mainContainer #buttons .button {
-      width: 200px;
+    #mainContainer #buttons button {
+      font-size: 30px;
+      width: 300px;
       margin: 5px;
       padding: 10px;
       border-radius: 9px;
       color: whitesmoke;
-      background-color: purple; }
+      background-color: purple;
+      cursor: pointer; }
+    #mainContainer #buttons button:hover {
+      background-color: orange; }
 
 @media only screen and (max-width: 600px) {
   #container {

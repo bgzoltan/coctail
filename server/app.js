@@ -1,61 +1,50 @@
 const express = require("express");
-const fs = require("fs");
-var cors = require("cors");
+const cors = require("cors");
 const axios = require("axios");
-
 const app = express();
 const port = 5000;
 
 app.use(cors());
-
 app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send("Random Coctail server");
 });
 
-app.post("/postCoctail", function (req, res) {
-  console.log("Post to Coctail ***********");
-  res.send("hello Client");
-});
-
 app.get("/coctail", function (req, res) {
-  console.log("Request for Coctail -------------");
+  console.log("***************************************");
+  console.log("**** Request for a Random Coctail ");
+  console.log("***************************************");
   let data = [];
   async function loadAPIData() {
     const promise = await axios.get(
       `http://www.thecocktaildb.com/api/json/v1/1/random.php`
     );
-    const status = promise.status;
-
-    if (status === 200) {
-      console.log("API DATA //////////////////", promise.data);
+    if (promise.status === 200) {
       data = promise.data;
       res.json(data);
     } else {
-      console.log("API PROBLEM !!!!!!!!!!!!!!!!!!!!!!!!");
-      res.status(404);
+      res.status(404).send("Not found");
     }
   }
   loadAPIData();
 });
 
 app.post("/coctail", function (req, res) {
-  console.log("Searc for Coctail -------------");
+  console.log("***************************************");
+  console.log("***** Search for a specified Coctail");
+  console.log("***************************************");
   let data = [];
   async function loadAPIData() {
     const promise = await axios.get(
-      `http://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita`
+      `http://www.thecocktaildb.com/api/json/v1/1/search.php?s=${req.body.search}`
     );
-    const status = promise.status;
-
-    if (status === 200) {
-      console.log("SEARCH API DATA //////////////////", promise.data);
+    console.log(promise.data.drinks);
+    if (promise.status === 200 && promise.data.drinks !== null) {
       data = promise.data;
       res.json(data);
     } else {
-      console.log("API PROBLEM !!!!!!!!!!!!!!!!!!!!!!!!");
-      res.status(404);
+      res.status(404).send("Not found");
     }
   }
   loadAPIData();

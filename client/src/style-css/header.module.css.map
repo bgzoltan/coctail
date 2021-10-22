@@ -1,6 +1,6 @@
 {
 "version": 3,
-"mappings": "AAEA,UAAW;EACN,KAAK,EAAE,IAAI;EACX,UAAU,EAAE,MAAM;EAClB,SAAS,ECHT,IAAI;EDIJ,KAAK,ECGF,KAAK;EDFR,gBAAgB,ECQV,MAAM",
+"mappings": "AAEA,UAAW;EAEN,GAAG,EAAC,GAAG;EACP,KAAK,EAAE,IAAI;EACX,UAAU,EAAE,MAAM;EAClB,SAAS,ECLT,IAAI;EDMJ,KAAK,ECCF,KAAK;EDAR,gBAAgB,ECMV,MAAM",
 "sources": ["../style-scss/header.module.scss","../style-scss/_variables.scss"],
 "names": [],
 "file": "header.module.css"

@@ -2,6 +2,7 @@
 
 #mainContainer {
      display: flex;
+
      flex-direction: column;
      width: 100%;
      flex-grow: 1;
@@ -12,12 +13,15 @@
           color: $color2;
           text-align: center;
           flex-grow: 1;
+          margin: 30px;
           #picture {
-               width: 40%;
+               width: 35%;
+               height: 35%;
           }
           #details {
                width: 60%;
                padding: 10px;
+            
                h2 {
                     font-size: $L;
                }
@@ -27,18 +31,24 @@
                     text-align: left;
                }
           }
+
      }
 
      #buttons {
           display: flex;
           justify-content: space-evenly;
-          .button {
-               width: 200px;
+          button {
+               font-size: $M;
+               width: 300px;
                margin: 5px;
                padding: 10px;
                border-radius: 9px;
                color: $color3;
                background-color: $bgColor3;
+               cursor: pointer;
+                        }
+          button:hover {
+               background-color: $bgColor2;
           }
      }
 }

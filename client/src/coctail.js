@@ -1,30 +1,16 @@
 import style from "./style-css/coctail.module.css";
 import React, { useState, useEffect } from "react";
+import Search from "./search";
 
 function Coctail() {
   const [coctails, setCoctails] = useState([]);
   const [search, setSearch] = useState("");
-  let ingredients = [
-    "strIngredient1",
-    "strIngredient2",
-    "strIngredient3",
-    "strIngredient4",
-    "strIngredient5",
-    "strIngredient6",
-    "strIngredient7",
-    "strIngredient8",
-    "strIngredient9",
-    "strIngredient10",
-    "strIngredient11",
-    "strIngredient12",
-    "strIngredient13",
-    "strIngredient14",
-    "strIngredient15"
-  ];
+  // The number of elements equal to the number of ingredients
+  let counter = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
 
-  console.log("Koktélok.", coctails, typeof ingredients, ingredients);
+  const [wantToSearch, setWantToSearch] = useState(false);
+
   const newCoctailHandler = () => {
-    console.log("button clicked");
     async function loadCoctail() {
       const promise = await fetch(`http://localhost:5000/coctail`, {
         method: "GET",
@@ -33,10 +19,9 @@ function Coctail() {
         }
       });
       const data = await promise.json();
-      const status = promise.status;
 
-      if (status === 200) {
-        console.log("GET data is OK *****************", data.drinks[0]);
+      if (promise.status === 200) {
+        console.log(data.drinks[0]);
         setCoctails(data.drinks);
       } else {
         console.log("PROBLEM --------------------");
@@ -46,14 +31,28 @@ function Coctail() {
     loadCoctail();
   };
 
-  const searchCoctailHandler = () => {
-    console.log("button clicked");
-  };
-
   return (
     <div id={style.mainContainer}>
+      {wantToSearch ? (
+        <Search
+          setWantToSearch={setWantToSearch}
+          search={search}
+          setSearch={setSearch}
+          setCoctails={setCoctails}
+        />
+      ) : (
+        <div></div>
+      )}
+      <div id={style.buttons}>
+        <button onClick={(e) => newCoctailHandler()} className={style.button}>
+          New Coctail
+        </button>
+        <button onClick={(e) => setWantToSearch(true)} className={style.button}>
+          Search Coctail
+        </button>
+      </div>
       {coctails.map((coctail, index) => (
-        <div id={style.container} key={index}>
+        <div id={style.container} key={coctail.idDrink}>
           <img
             id={style.picture}
             src={coctail.strDrinkThumb}
@@ -62,31 +61,27 @@ function Coctail() {
 
           <div id={style.details}>
             <h2> {coctail.strDrink}</h2>
+            <hr />
+            <div>Receipt:</div>
             <ol>
-              {ingredients.map((ingr, index) =>
-                coctail[ingr] !== null ? (
-                  <li key={index}>{coctail[ingr]}</li>
+              {counter.map((ingr, index) =>
+                coctail[`strIngredient${index + 1}`] !== null ? (
+                  <li key={index}>
+                    {coctail[`strMeasure${index + 1}`]}
+                    {coctail[`strIngredient${index + 1}`]}
+                  </li>
                 ) : (
                   <div></div>
                 )
               )}
             </ol>
-            <p> {coctail.strInstructions}</p>
+            <div>
+              Instructions:
+              <p> {coctail.strInstructions}</p>
+            </div>
           </div>
         </div>
       ))}
-
-      <div id={style.buttons}>
-        <button onClick={(e) => newCoctailHandler()} className={style.button}>
-          New Coctail
-        </button>
-        <button
-          onClick={(e) => searchCoctailHandler()}
-          className={style.button}
-        >
-          Search Coctail
-        </button>
-      </div>
     </div>
   );
 }
