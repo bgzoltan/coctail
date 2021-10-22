@@ -39,7 +39,7 @@ app.post("/coctail", function (req, res) {
     const promise = await axios.get(
       `http://www.thecocktaildb.com/api/json/v1/1/search.php?s=${req.body.search}`
     );
-    console.log(promise.data.drinks);
+
     if (promise.status === 200 && promise.data.drinks !== null) {
       data = promise.data;
       res.json(data);
